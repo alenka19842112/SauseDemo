@@ -12,7 +12,6 @@ SUMMARY     Проверка ввода верных  данных в поля "
 
 PRIORITY	1
 
-STATUS      PASSED
 
 COMMENT    inputOfCorrectDataTest
 **********************************
@@ -23,7 +22,6 @@ SUMMARY     Проверка ввода пустых значений в пол�
 
 PRIORITY    2
 
-STATUS      PASSED
 
 COMMENT     inputOfEmptyFieldsTest
 ************************************
@@ -34,7 +32,6 @@ SUMMARY     Проверка ввода пустых значений в пол�
 
 PRIORITY    2
 
-STATUS      PASSED
 
 COMMENT     inputOfEmptyPasswordFieldTest
 ************************************
@@ -45,7 +42,6 @@ SUMMARY     Проверка ввода неверных данных в пол�
 
 PRIORITY    2
 
-STATUS      PASSED
 
 COMMENT     inputOfInCorrectDataTest
 ************************************
@@ -57,7 +53,6 @@ SUMMARY     Проверка перехода на страницу "Cart Page" 
 
 PRIORITY	1
 
-STATUS      PASSED
 
 COMMENT    clickCartButtonTest
 **********************************
@@ -68,7 +63,6 @@ SUMMARY     Удаление товара из корзины при нажат�
 
 PRIORITY	1
 
-STATUS      PASSED
 
 COMMENT    removeProductToCartTest
 **********************************
