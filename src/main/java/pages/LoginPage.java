@@ -17,16 +17,18 @@ public class LoginPage extends BasePage implements IConstansPage {
      * @param username enter user name
      * @param password enter password
      */
-    public void login(String username, String password) {
+    public ProductPage login(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        return new ProductPage(driver);
     }
     /**
      * open Page "https://www.saucedemo.com"
      */
-    public void openPage() {
+    public LoginPage openPage() {
         driver.get(SAUSE_DEMO_BASE_URL);
+        return this;
     }
     /**
      * error message when entering invalid data

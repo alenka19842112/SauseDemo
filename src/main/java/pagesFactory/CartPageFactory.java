@@ -1,9 +1,12 @@
-package pages;
+package pagesFactory;
+
 import Constans.IConstansPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-public class CartPage extends HeaderPage implements IConstansPage {
-    public CartPage(WebDriver driver) {
+import pages.CartPage;
+
+public class CartPageFactory extends BasePageFactory implements IConstansPage {
+    public CartPageFactory(WebDriver driver) {
         super(driver);
     }
     private static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class='cart_item']";
@@ -12,9 +15,8 @@ public class CartPage extends HeaderPage implements IConstansPage {
     /**
      * open Page "https://www.saucedemo.com/cart.html"
      */
-    public CartPage openPage() {
+    public void openPage() {
         driver.get(SAUSE_DEMO_CART_URL);
-        return this;
     }
     /**
      * get Product Price
@@ -35,9 +37,8 @@ public class CartPage extends HeaderPage implements IConstansPage {
      * click remove button
      * @param productName product Name
      */
-    public CartPage removeProductFromCart(String productName) {
+    public void removeProductFromCart(String productName) {
         driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).click();
-        return this;
     }
     /**
      *checks for the presence of a remove button
