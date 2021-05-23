@@ -1,4 +1,5 @@
 package tests;
+
 public interface ITestConstans {
     String STANDARD_USER_LOGIN = "standard_user";
     String STANDARD_USER_PASSWORD = "secret_sauce";
