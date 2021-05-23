@@ -21,6 +21,7 @@ public class LoginPageFactory extends BasePageFactory implements IConstansPage {
 
     @FindBy(xpath = "//*[contains(@Class, 'error-message-container') and contains(@Class, 'error')]")
     WebElement errorMessageLocator;
+
     /**
      * login to the page "https://www.saucedemo.com"
      *
@@ -32,12 +33,14 @@ public class LoginPageFactory extends BasePageFactory implements IConstansPage {
         passwordInput.sendKeys(password);
         loginButton.click();
     }
+
     /**
      * open Page "https://www.saucedemo.com"
      */
     public void openPage() {
         driver.get(SAUSE_DEMO_BASE_URL);
     }
+
     /**
      * error message when entering invalid data
      *

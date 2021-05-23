@@ -1,4 +1,5 @@
 package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,14 +11,16 @@ import pages.ProductPage;
 import pagesFactory.LoginPageFactory;
 
 import java.util.concurrent.TimeUnit;
+
 public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;
     ProductPage productPage;
     CartPage cartPage;
     LoginPageFactory loginPageFactory;
+
     @BeforeMethod
-    public void initTest(){
+    public void initTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -27,8 +30,9 @@ public class BaseTest {
         cartPage = new CartPage(driver);
         loginPageFactory = new LoginPageFactory(driver);
     }
+
     @AfterMethod(alwaysRun = true)
-    public void endTest(){
+    public void endTest() {
         driver.quit();
     }
 }
