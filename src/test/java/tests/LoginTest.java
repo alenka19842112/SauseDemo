@@ -21,14 +21,6 @@ public class LoginTest extends BaseTest implements ITestConstans {
     }
 
     @Test
-    public void asdTest() {
-        loginPage
-                .openPage()
-                .login("", "");
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Epic sadface: Username is required");
-    }
-
-    @Test
     public void inputOfEmptyPasswordFieldTest() {
         loginPage
                 .openPage()
