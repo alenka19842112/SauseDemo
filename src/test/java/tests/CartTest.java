@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest implements ITestConstans {
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void addProductToCartTest() {
         loginPage
                 .openPage()

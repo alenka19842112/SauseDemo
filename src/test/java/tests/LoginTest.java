@@ -8,7 +8,7 @@ public class LoginTest extends BaseTest implements ITestConstans {
     public void inputOfCorrectDataTest() {
         loginPage
                 .openPage()
-                .login(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
+                .login(System.getProperty("username"), System.getProperty("password"));
         Assert.assertEquals(productPage.getProductPageUrl(), "https://www.saucedemo.com/inventory.html");
     }
 
