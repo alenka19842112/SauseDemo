@@ -4,35 +4,27 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest implements ITestConstans {
-    @Test
+    @Test(description = "Login with correct data Test", priority = 1)
     public void inputOfCorrectDataTest() {
-        loginPage
-                .openPage()
-                .login(System.getProperty("username"), System.getProperty("password"));
-        Assert.assertEquals(productPage.getProductPageUrl(), "https://www.saucedemo.com/inventory.html");
+        loginSteps.loginInSite(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
+        Assert.assertEquals(productPage.getProductPageUrl(), SAUSE_DEMO_PRODUCT_URL);
     }
 
-    @Test
+    @Test(description = "input of empty fields in Login page Test", priority = 2)
     public void inputOfEmptyFieldsTest() {
-        loginPage
-                .openPage()
-                .login("", "");
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Epic sadface: Username is required");
+        loginSteps.loginInSite("", "");
+        Assert.assertEquals(loginPage.getErrorMessageText(), LOGIN_ERROR_MESSAGE_EMPTY_FIELD);
     }
 
-    @Test
+    @Test(description = "input of empty password field in Login page Test", priority = 2)
     public void inputOfEmptyPasswordFieldTest() {
-        loginPage
-                .openPage()
-                .login("standard_user", "");
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Epic sadface: Password is required");
+        loginSteps.loginInSite(STANDARD_USER_LOGIN, "");
+        Assert.assertEquals(loginPage.getErrorMessageText(), LOGIN_ERROR_MESSAGE_EMPTY_PASSWORD);
     }
 
-    @Test
+    @Test(description = "Login with incorrect data Test", priority = 2)
     public void inputOfInCorrectDataTest() {
-        loginPage
-                .openPage()
-                .login("standard_user", "secret");
-        Assert.assertEquals(loginPage.getErrorMessageText(), "Epic sadface: Username and password do not match any user in this service");
+        loginSteps.loginInSite(STANDARD_USER_LOGIN, "secret");
+        Assert.assertEquals(loginPage.getErrorMessageText(), LOGIN_ERROR_MESSAGE_INCORRECT_DATA);
     }
 }
