@@ -2,12 +2,15 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class LoginTest extends BaseTest implements ITestConstans {
     @Test(description = "Login with correct data Test", priority = 1)
     public void inputOfCorrectDataTest() {
         loginPage.openPage()
-                .login(System.getenv("username"), System.getenv("password"));
+                .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+
         //loginSteps.loginInSite(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
         Assert.assertEquals(productPage.getProductPageUrl(), SAUSE_DEMO_PRODUCT_URL);
     }
