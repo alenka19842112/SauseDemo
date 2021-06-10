@@ -6,7 +6,9 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest implements ITestConstans {
     @Test(description = "Login with correct data Test", priority = 1)
     public void inputOfCorrectDataTest() {
-        loginSteps.loginInSite(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
+        loginPage.openPage()
+                .login(System.getenv("username"), System.getenv("password"));
+        //loginSteps.loginInSite(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
         Assert.assertEquals(productPage.getProductPageUrl(), SAUSE_DEMO_PRODUCT_URL);
     }
 
