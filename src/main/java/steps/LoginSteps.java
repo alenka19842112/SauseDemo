@@ -10,6 +10,7 @@ public class LoginSteps {
     public LoginSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
     }
+
     @Step("Login in https://www.saucedemo.com")
     public LoginSteps loginInSite(String username, String password) {
         loginPage
