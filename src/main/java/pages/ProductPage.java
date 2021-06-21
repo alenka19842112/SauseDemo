@@ -1,9 +1,11 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class ProductPage extends HeaderPage {
 
     public ProductPage(WebDriver driver) {
@@ -20,7 +22,12 @@ public class ProductPage extends HeaderPage {
      */
     @Step("add Product {productName}To Cart ")
     public ProductPage addProductToCart(String productName) {
-        driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
+        try {
+            log.info("click ADD PRODUCT button. Locator:" + ADD_PRODUCT_TO_CART_BUTTON);
+            driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
+        } catch (Exception e) {
+            log.error("Error: Locator ADD PRODUCT button isn't found", e);
+        }
         return this;
     }
 
@@ -38,6 +45,11 @@ public class ProductPage extends HeaderPage {
      */
     @Step("click Cart button")
     public void clickCartButton() {
-        driver.findElement(CART_BUTTON).click();
+        try {
+            log.info("click CART button. Locator:" + CART_BUTTON);
+            driver.findElement(CART_BUTTON).click();
+        }catch (Exception e){
+            log.error("Error: Locator CART button isn't found", e);
+        }
     }
 }
