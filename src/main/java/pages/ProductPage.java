@@ -23,6 +23,7 @@ public class ProductPage extends HeaderPage {
     @Step("add Product {productName}To Cart ")
     public ProductPage addProductToCart(String productName) {
         try {
+            log.info("productName ="  + productName);
             log.info("click ADD PRODUCT button. Locator:" + ADD_PRODUCT_TO_CART_BUTTON);
             driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
         } catch (Exception e) {

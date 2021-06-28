@@ -40,6 +40,7 @@ public class CartPage extends HeaderPage implements IConstansPage {
      */
     public String getProductPrice(String productName) {
         try {
+            log.info("productName = "  + productName);
             return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
         } catch (Exception e) {
             log.error("Error in getProductPrice method", e);
@@ -64,6 +65,7 @@ public class CartPage extends HeaderPage implements IConstansPage {
     @Step("remove product from cart")
     public CartPage removeProductFromCart(String productName) {
         try {
+            log.info("productName = "  + productName);
             log.info("click REMOVE PRODUCT button. Locator:" + REMOVE_PRODUCT_FROM_CART_BUTTON);
             driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).click();
         } catch (Exception e) {
@@ -79,6 +81,7 @@ public class CartPage extends HeaderPage implements IConstansPage {
      * @return List(REMOVE_PRODUCT_FROM_CART_BUTTON).size
      */
     public int getExistsRemoveButtonsCount(String productName) {
+        log.info("productName = "  + productName);
         return driver.findElements(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).size();
     }
 }
