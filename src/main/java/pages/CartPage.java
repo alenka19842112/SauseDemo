@@ -2,9 +2,11 @@ package pages;
 
 import Constans.IConstansPage;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class CartPage extends HeaderPage implements IConstansPage {
     public CartPage(WebDriver driver) {
         super(driver);
@@ -18,10 +20,15 @@ public class CartPage extends HeaderPage implements IConstansPage {
     /**
      * open Page "https://www.saucedemo.com/cart.html"
      */
-    @Step(" open Cart page")
+    @Step("open Cart page")
     public CartPage openPage() {
-        driver.get(SAUSE_DEMO_CART_URL);
-        waitForPageOpened(CART_BUTTON);
+        try {
+            log.info("Open Cart page, URL:" + SAUSE_DEMO_CART_URL);
+            driver.get(SAUSE_DEMO_CART_URL);
+            waitForPageOpened(CART_BUTTON);
+        } catch (Exception e) {
+            log.fatal(" Fatal error: Cart Page" + SAUSE_DEMO_CART_URL + "not found", e);
+        }
         return this;
     }
 
@@ -32,7 +39,13 @@ public class CartPage extends HeaderPage implements IConstansPage {
      * @return text product price
      */
     public String getProductPrice(String productName) {
-        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        try {
+            log.info("productName = "  + productName);
+            return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        } catch (Exception e) {
+            log.error("Error in getProductPrice method", e);
+            return "";
+        }
     }
 
     /**
@@ -51,7 +64,13 @@ public class CartPage extends HeaderPage implements IConstansPage {
      */
     @Step("remove product from cart")
     public CartPage removeProductFromCart(String productName) {
-        driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).click();
+        try {
+            log.info("productName = "  + productName);
+            log.info("click REMOVE PRODUCT button. Locator:" + REMOVE_PRODUCT_FROM_CART_BUTTON);
+            driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).click();
+        } catch (Exception e) {
+            log.error("Error: REMOVE PRODUCT button is not found",e);
+        }
         return this;
     }
 
@@ -62,6 +81,7 @@ public class CartPage extends HeaderPage implements IConstansPage {
      * @return List(REMOVE_PRODUCT_FROM_CART_BUTTON).size
      */
     public int getExistsRemoveButtonsCount(String productName) {
+        log.info("productName = "  + productName);
         return driver.findElements(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).size();
     }
 }

@@ -10,7 +10,6 @@ public class LoginTest extends BaseTest implements ITestConstans {
         loginPage.openPage()
                 .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
-        //loginSteps.loginInSite(STANDARD_USER_LOGIN, STANDARD_USER_PASSWORD);
         Assert.assertEquals(productPage.getProductPageUrl(), SAUSE_DEMO_PRODUCT_URL);
     }
 
